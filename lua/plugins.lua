@@ -9,7 +9,6 @@ vim.cmd [[packadd packer.nvim]]
 packer.startup(function(use)
 	use 'tjdevries/colorbuddy.nvim'
 	use 'rhysd/vim-clang-format'
-    use 'svrana/neosolarized.nvim'
 	use 'shaunsingh/nord.nvim'
 	use 'nvim-treesitter/nvim-treesitter'
 	use 'dkprice/vim-easygrep'
@@ -31,16 +30,16 @@ packer.startup(function(use)
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 }
 	use {
-  'nvim-telescope/telescope.nvim', tag = '0.1.1',
+  'nvim-telescope/telescope.nvim', tag = '0.1.1'
 }
     use 'nvim-lua/plenary.nvim'
-		use {
-		  "startup-nvim/startup.nvim",
-		  requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
-		  config = function()
-			require"startup".setup()
-		  end
-		}
+--		use {
+--		  "startup-nvim/startup.nvim",
+--		  requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+--		  config = function()
+--			require"startup".setup()
+--		  end
+--		}
 	use 'mfussenegger/nvim-jdtls'
 	use 'overcache/NeoSolarized'
 	use 'windwp/nvim-autopairs'
@@ -65,7 +64,6 @@ packer.startup(function(use)
 	use '/nvim-lualine/lualine.nvim'
 	use 'martinsione/darkplus.nvim'
 	use 'craftzdog/solarized-osaka.nvim'
-	use 'nvim-treesitter/nvim-treesitter-angular'
 	use 'rose-pine/neovim'
 	use 'preservim/nerdtree'
 	use 'hrsh7th/cmp-cmdline'
@@ -82,5 +80,85 @@ packer.startup(function(use)
 				show_colors = true,
 			}
 		end
-	}
+	} 
+	use({
+		"kdheepak/lazygit.nvim",
+		-- optional for floating window border decoration
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+	})
+	use({
+	  'projekt0n/github-nvim-theme',
+	  config = function()
+		require('github-theme').setup({
+		  -- ...
+		})
+
+		vim.cmd('colorscheme github_dark')
+	  end
+	})
+	use {'christianchiarulli/nvcode-color-schemes.vim'}
+	use 'tjdevries/express_line.nvim'
+	use 'ibhagwan/fzf-lua'
+	require("packer").startup(function()
+	  use({
+		"stevearc/oil.nvim",
+		config = function()
+		  require("oil").setup()
+		end,
+	  })
+	end)
+	use({
+    'MeanderingProgrammer/markdown.nvim',
+    as = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
+    after = { 'nvim-treesitter' },
+    requires = { 'echasnovski/mini.nvim', opt = true }, -- if you use the mini.nvim suite
+    -- requires = { 'echasnovski/mini.icons', opt = true }, -- if you use standalone mini plugins
+    -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+    config = function()
+        require('render-markdown').setup({})
+    end,
+})
+	use 'ryanoasis/vim-devicons'
+	use 'tiagofumo/vim-nerdtree-syntax-highlight'
+  use 'Yazeed1s/minimal.nvim'
+  use 'mbbill/undotree'
+  use 'nomis51/nvim-xcode-theme'
+  use 'metalelf0/base16-black-metal-scheme'
+  use { "catppuccin/nvim", as = "catppuccin" }
+  use 'andrew-george/telescope-themes'
+  use("oxfist/night-owl.nvim")
+  use {
+    'NeogitOrg/neogit',
+    tag = 'v0.0.1'
+  }
+  use 'folke/tokyonight.nvim'
+  use 'roobert/tailwindcss-colorizer-cmp.nvim'
+  use 'blazkowolf/gruber-darker.nvim'
+  use 'akinsho/org-bullets.nvim'
+  use {'nvim-orgmode/orgmode', config = function()
+  require('orgmode').setup{}
+end
+}
+  use {
+    "chipsenkbeil/org-roam.nvim",
+    tag = "0.1.0",
+    requires = {
+      {
+        "nvim-orgmode/orgmode",
+        tag = "0.3.4",
+      },
+    },
+    config = function()
+      require("org-roam").setup({
+        directory = "~/orgfiles",
+      })
+    end
+  }
+  use "kylechui/nvim-surround"
+  use "sotte/presenting.nvim"
+  use 'svrana/neosolarized.nvim'
+  use 'loctvl842/monokai-pro.nvim'
+  use 'tanvirtin/monokai.nvim'
 end)

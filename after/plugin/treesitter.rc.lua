@@ -6,7 +6,7 @@ end
 -- Make only for html and css ?
 ts.setup {
 	highlight = {
-		enable = false,
+		enable = true,
 	-- 	disable = { 'javascript', 'typescript', 'json', 'cpp' , 'c', 
 	-- 	'python'},
 		disable = {},
@@ -22,8 +22,4 @@ ts.setup {
 		'javascript',
 		'c',
 		'python'
-	},
-	autotag = {
-		enable = true,
-	}
-}
+	}}
